@@ -8,7 +8,6 @@ app.on('window-all-closed', function () {
   app.quit();
 });
 
-
 app.on('ready', function () {
   console.log('Hello, browser process');
 
