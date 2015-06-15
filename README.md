@@ -1,4 +1,4 @@
-# electron-connect
+# electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=v0.1.1)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)
 Utility tool to develop applications with [Electron](http://electron.atom.io/).
 
 It provides the following features:
