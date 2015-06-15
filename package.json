@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "electron", "livereload"
+    "electron",
+    "livereload"
   ],
   "author": "Quramy",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "electron-prebuilt": "^0.27.3",
+    "lodash": "^3.9.3",
+    "ws": "^0.7.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
