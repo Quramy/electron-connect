@@ -1,4 +1,4 @@
-# electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=v0.1.1)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)
+# electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=master)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)
 Utility tool to develop applications with [Electron](http://electron.atom.io/).
 
 Using this in your Node.js scripts(e.g. `gulpfile.js`), you can livereload your Electron app.
@@ -27,27 +27,17 @@ npm install electron-connect
 var gulp = require('gulp');
 var electron = require('electron-connect').server.create();
 
-gulp.task('watch', function () {
-  gulp.watch('app.js', ['reload:browser']);
-  gulp.watch(['index.js', 'index.html'], ['reload:renderer']);
-});
+gulp.task('serve', function () {
 
-gulp.task('serve', ['watch'], function () {
   // Start Electron process
   electron.start();
-});
 
-gulp.task('reload:browser', function () {
   // Restart main process
-  electron.restart();
-});
+  gulp.watch('app.js', electron.restart);
 
-gulp.task('reload:renderer', function () {
   // Reload renderer process
-  electron.reload();
+  gulp.watch(['index.js', 'index.html'], electron.reload);
 });
-
-gulp.task('default', ['serve']);
 ```
 
 * app.js(an entry point of your Electron app)

@@ -4,8 +4,10 @@ var gulp = require('gulp');
 var electron = require('../../').server.create();
 
 gulp.task('watch', function () {
-  gulp.watch('app.js', ['reload:browser']);
-  gulp.watch(['index.js', 'index.html'], ['reload:renderer']);
+  // Restart main process
+  gulp.watch('app.js', electron.restart);
+  // Reload renderer process
+  gulp.watch(['index.js', 'index.html'], electron.reload);
 });
 
 gulp.task('serve', ['watch'], function () {
