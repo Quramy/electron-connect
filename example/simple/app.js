@@ -16,7 +16,7 @@ app.on('ready', function () {
   });
 
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
-  client.create(mainWindow);
+  // client.create(mainWindow);
   // client.create(mainWindow, function () {
   //   console.log('done');
   // });

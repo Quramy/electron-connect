@@ -16,10 +16,11 @@ npm install electron-connect
 ```
 
 ## Usage
+`electron-connect` has server and client components. They communicate with each other using WebSocket.
+The server component manages Electron process and broadcasts reload event to client, and client components reload renderer's resources.
 
-### Using with gulp
-
-* gulpfile.js
+### Server
+Here is an example createing a server in [gulpfile](http://gulpjs.com/).
 
 ```js
 'use strict';
@@ -29,10 +30,10 @@ var electron = require('electron-connect').server.create();
 
 gulp.task('serve', function () {
 
-  // Start Electron process
+  // Start browser process
   electron.start();
 
-  // Restart main process
+  // Restart browser process
   gulp.watch('app.js', electron.restart);
 
   // Reload renderer process
@@ -40,7 +41,20 @@ gulp.task('serve', function () {
 });
 ```
 
-* app.js(an entry point of your Electron app)
+### Client
+A client can be created in browser process or renderer process.
+
+* RendererProcess
+```html
+<html>
+<body>
+<!-- Connect to server process -->
+<script>require('electron-connect').client.create()</script>
+</body>
+</html>
+```
+
+* BrowserProcess 
 
 ```js
 'use strict';
@@ -92,7 +106,7 @@ This method is useful for callback of your rendererProcess sourcecodes' change e
 ### stop([callback])
 Kills Electron process and stops server.
 
-## client.create(browserWindow, [options], [callback])
+## client.create([browserWindow], [options], [callback])
 
 * `browserWindow` Object
 * `options` Object
@@ -102,6 +116,7 @@ Kills Electron process and stops server.
 
 Creates a new client with `browserWindow`.  `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
 Once a client is created and connects the server, the client can recieve events(e.g. reload).
+You can omit `browserWindow` in only rendererProcess.
 
 If `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.
 And when `ProcessManager.restart()` is called, the client recover the bounds stored at server.
