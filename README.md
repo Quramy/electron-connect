@@ -71,6 +71,8 @@ app.on('ready', function () {
 });
 ```
 
+If you want details, see [example/simple](example/simple).
+
 ## API References
 
 ## server.create([options])
