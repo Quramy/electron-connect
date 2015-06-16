@@ -10,7 +10,6 @@ app.on('window-all-closed', function () {
 
 app.on('ready', function () {
   console.log('Hello, browser process');
-
   var mainWindow = new BrowserWindow({
     width: 400,
     height: 300
@@ -18,4 +17,8 @@ app.on('ready', function () {
 
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
   client.create(mainWindow);
+  // client.create(mainWindow, function () {
+  //   console.log('done');
+  // });
+  // client.create(mainWindow, {sendBounds: false});
 });

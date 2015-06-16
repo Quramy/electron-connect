@@ -69,5 +69,48 @@ app.on('ready', function () {
 });
 ```
 
+## API References
+
+## server.create([options])
+
+* `option` Object
+ * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your falked Electron.
+ * `path` String. A path to your `package.json` file(default: `process.cwd()`).
+ * `port` Number. WebSocket server port(default: `30080`).
+
+Returns a new `ProcessManager` object.
+
+## Class: ProcessManager
+
+### start([callback])
+Starts a server and Electron application process.
+
+### restart([callback])
+Kills Electron process if it exsists, and start new one.
+
+This method is useful for callback of your browserProcess sourcecodes' change event.
+
+### reload()
+Broadcasts reload event to all connected `Client` object. This method does not kill any Electron processes.
+
+This method is useful for callback of your rendererProcess sourcecodes' change event.
+
+### stop([callback])
+Kills Electron process and stops server.
+
+## client.create(browserWindow, [options], [callback])
+
+* `browserWindow` Object
+* `options` Object
+ * `port` Number
+ * `sendBounds` Boolean
+* `callback` Function
+
+Creates a new client with `browserWindow`.  `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
+Once a client is created and connects the server, the client can recieve events(e.g. reload).
+
+If `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.
+And when `ProcessManager.restart() is called, the client recover the bounds stored at server.
+
 ## License
 MIT
