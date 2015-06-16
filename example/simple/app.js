@@ -17,5 +17,5 @@ app.on('ready', function () {
   });
 
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
-  client.create().connect(app, mainWindow);
+  client.create(mainWindow);
 });

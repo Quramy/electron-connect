@@ -3,7 +3,8 @@ Utility tool to develop applications with [Electron](http://electron.atom.io/).
 
 It provides the following features:
 
-* Live reload(main process and renderer process)
+* start(and restart) Electron process in your Node.js script
+* reload renderer process in your Node.js script
 
 ## Install
 Use npm:
@@ -64,7 +65,7 @@ app.on('ready', function () {
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
   // Connect to server process
-  client.create().connect(app, mainWindow);
+  client.create(mainWindow);
 });
 ```
 
