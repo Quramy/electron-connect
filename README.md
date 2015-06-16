@@ -1,6 +1,8 @@
 # electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=v0.1.1)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)
 Utility tool to develop applications with [Electron](http://electron.atom.io/).
 
+Using this in your Node.js scripts(e.g. `gulpfile.js`), you can livereload your Electron app.
+
 It provides the following features:
 
 * start(and restart) Electron process in your Node.js script
@@ -110,7 +112,7 @@ Creates a new client with `browserWindow`.  `browserWindow` should be an Electro
 Once a client is created and connects the server, the client can recieve events(e.g. reload).
 
 If `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.
-And when `ProcessManager.restart() is called, the client recover the bounds stored at server.
+And when `ProcessManager.restart()` is called, the client recover the bounds stored at server.
 
 ## License
 MIT

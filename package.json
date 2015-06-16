@@ -1,7 +1,7 @@
 {
   "name": "electron-connect",
-  "version": "0.1.2",
-  "description": "",
+  "version": "0.1.3",
+  "description": "Livereload tools for Electron development",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
@@ -11,7 +11,8 @@
     "livereload",
     "gulp"
   ],
-  "author": "Quramy",
+  "homepage": "https://github.com/Quramy/electron-connect",
+  "author": {"name": "Quramy", "email": "yosuke.kurami@gmail.com"},
   "license": "MIT",
   "dependencies": {
     "electron-prebuilt": "^0.28.1",
