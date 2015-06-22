@@ -97,7 +97,7 @@ Returns a new `ProcessManager` object.
 
 Starts a server and Electron application process.
 
-### restart([callback])
+### restart([args], [callback])
 
 * `args` String or Array. Additional arguments used when create a process.
 * `callback` Function
