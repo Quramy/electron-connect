@@ -1,6 +1,6 @@
 {
   "name": "electron-connect",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Livereload tools for Electron development",
   "main": "index.js",
   "scripts": {
