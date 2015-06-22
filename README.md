@@ -48,11 +48,16 @@ A client can be created in browser process or renderer process.
 ```html
 <html>
 <body>
+<!-- build:remove -->
 <!-- Connect to server process -->
 <script>require('electron-connect').client.create()</script>
+<!-- end:build -->
 </body>
 </html>
 ```
+
+Do you want to use this tool for only develop environment ?
+You can remove `<script>` block in your gulpfile using [gulp-useref](https://www.npmjs.com/package/gulp-useref#usage).
 
 * BrowserProcess 
 
@@ -106,8 +111,12 @@ Kills Electron process if it exsists, and starts new one.
 
 This method is useful for callback of your browserProcess sourcecodes' change event.
 
-### reload()
-Broadcasts reload event to all connected `Client` object. This method does not kill any Electron processes.
+### reload([ids])
+
+* `ids` String or Array. A list of id of target client.
+
+Emit reload event to target clients. Broadcasts reload event to all connected `Client` object if `ids` not set.
+This method does not kill any Electron processes.
 
 This method is useful for callback of your rendererProcess sourcecodes' change event.
 
@@ -116,6 +125,20 @@ This method is useful for callback of your rendererProcess sourcecodes' change e
 * `callback` Function
 
 Kills Electron process and stops server.
+
+### on(evenName, callback)
+
+* `evenName` String
+* `callback` Function
+
+Registers an eventhandler. It can be emitted by `Client.sendMessage`.
+
+### broadcast(type, [data])
+
+* `type` String. A message type.
+* `data` Object. A message data.
+
+Broadcasts a event to all clients.
 
 ## client.create([browserWindow], [options], [callback])
 
@@ -131,6 +154,22 @@ You can omit `browserWindow` in only rendererProcess.
 
 If `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.
 And when `ProcessManager.restart()` is called, the client recover the bounds stored at server.
+
+## class: Client
+
+### on(evenName, callback)
+
+* `evenName` String
+* `callback` Function
+
+Registers an eventhandler. It can be emitted by `ProcessManager.broadcast`.
+
+### sendMessage(type, [data])
+
+* `type` String. A message type.
+* `data` Object. A message data.
+
+Emits an event to `ProcessManager`.
 
 ## License
 MIT
