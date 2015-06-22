@@ -7,6 +7,17 @@ gulp.task('serve', function () {
   // Start browser process
   electron.start();
 
+  // // Add an argument
+  // electron.start('Hoge!');
+
+  // // Add list of arguments
+  // electron.start(['Hoge', 'foo']);
+
+  // // Callback
+  // electron.start(function () {
+  //   console.log('started');
+  // });
+
   // Restart browser process
   gulp.watch('app.js', electron.restart);
 

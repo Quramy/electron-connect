@@ -9,6 +9,7 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
+  console.log(process.argv.join(', '));
   console.log('Hello, browser process');
   var mainWindow = new BrowserWindow({
     width: 400,

@@ -90,11 +90,19 @@ Returns a new `ProcessManager` object.
 
 ## Class: ProcessManager
 
-### start([callback])
+### start([args], [callback])
+
+* `args` String or Array. Additional arguments used when create a process.
+* `callback` Function
+
 Starts a server and Electron application process.
 
 ### restart([callback])
-Kills Electron process if it exsists, and start new one.
+
+* `args` String or Array. Additional arguments used when create a process.
+* `callback` Function
+
+Kills Electron process if it exsists, and starts new one.
 
 This method is useful for callback of your browserProcess sourcecodes' change event.
 
@@ -104,6 +112,9 @@ Broadcasts reload event to all connected `Client` object. This method does not k
 This method is useful for callback of your rendererProcess sourcecodes' change event.
 
 ### stop([callback])
+
+* `callback` Function
+
 Kills Electron process and stops server.
 
 ## client.create([browserWindow], [options], [callback])
