@@ -57,7 +57,7 @@ A client can be created in browser process or renderer process.
 ```
 
 Do you want to use this tool for only develop environment ?
-You can remove `<script>` block in your gulpfile using [gulp-useref](https://www.npmjs.com/package/gulp-useref#usage).
+You can remove the `<script>` block in your gulpfile using [gulp-useref](https://www.npmjs.com/package/gulp-useref#usage).
 
 * BrowserProcess 
 
@@ -126,16 +126,16 @@ This method is useful for callback of your rendererProcess sourcecodes' change e
 
 Kills Electron process and stops server.
 
-### on(evenName, callback)
+### on(eventName, callback)
 
-* `evenName` String
+* `eventName` String
 * `callback` Function
 
 Registers an eventhandler. It can be emitted by `Client.sendMessage`.
 
-### broadcast(type, [data])
+### broadcast(eventName, [data])
 
-* `type` String. A message type.
+* `eventName` String. A message type.
 * `data` Object. A message data.
 
 Broadcasts a event to all clients.
@@ -148,7 +148,7 @@ Broadcasts a event to all clients.
  * `sendBounds` Boolean
 * `callback` Function
 
-Creates a new client with `browserWindow`.  `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
+Creates a new `Client` object with `browserWindow` and connects to `ProcessManager`. The `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
 Once a client is created and connects the server, the client can recieve events(e.g. reload).
 You can omit `browserWindow` in only rendererProcess.
 
@@ -157,16 +157,20 @@ And when `ProcessManager.restart()` is called, the client recover the bounds sto
 
 ## class: Client
 
-### on(evenName, callback)
+### id
 
-* `evenName` String
+An identifier of this client. It is a same value `browserWindow.id`.
+
+### on(eventName, callback)
+
+* `eventName` String
 * `callback` Function
 
 Registers an eventhandler. It can be emitted by `ProcessManager.broadcast`.
 
-### sendMessage(type, [data])
+### sendMessage(eventName, [data])
 
-* `type` String. A message type.
+* `eventName` String. A message type.
 * `data` Object. A message data.
 
 Emits an event to `ProcessManager`.
