@@ -1,6 +1,6 @@
 {
   "name": "electron-connect",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Livereload tools for Electron development",
   "main": "index.js",
   "scripts": {
@@ -16,12 +16,14 @@
   "author": {"name": "Quramy", "email": "yosuke.kurami@gmail.com"},
   "license": "MIT",
   "dependencies": {
-    "electron-prebuilt": "^0.28.1",
     "lodash": "^3.9.3",
     "ws": "^0.7.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.1.1"
+  },
+  "peerDependencies": {
+    "electron-prebuilt": "^0.28.1"
   }
 }
