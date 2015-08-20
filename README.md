@@ -90,6 +90,7 @@ If you want details, see [example/simple](example/simple).
  * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your falked Electron.
  * `path` String. A path to your `package.json` file(default: `process.cwd()`).
  * `port` Number. WebSocket server port(default: `30080`).
+ * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).
 
 Returns a new `ProcessManager` object.
 
