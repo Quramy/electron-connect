@@ -12,6 +12,7 @@ It provides the following features:
 Use npm:
 
 ```bash
+npm install -g electron-prebuilt
 npm install electron-connect
 ```
 
@@ -20,7 +21,7 @@ npm install electron-connect
 The server component manages Electron process and broadcasts reload event to client, and client components reload renderer's resources.
 
 ### Server
-Here is an example createing a server in [gulpfile](http://gulpjs.com/).
+Here is an example creating a server in [gulpfile](http://gulpjs.com/).
 
 ```js
 'use strict';
@@ -87,12 +88,18 @@ If you want details, see [example/simple](example/simple).
 ## server.create([options])
 
 * `option` Object
- * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your falked Electron.
+ * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your forked Electron.
+ * `useGlobalElectron` Boolean. If set, electron-connect use `electron-prebuilt` installed globally(default: `false`).
  * `path` String. A path to your `package.json` file(default: `process.cwd()`).
  * `port` Number. WebSocket server port(default: `30080`).
  * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).
 
 Returns a new `ProcessManager` object.
+
+If neither `electron` nor `useGlobalElectron` are set, electron-connect searches `electron-prebuilt` modules automatically.
+
+1. First, electron-connect searches `electron-prebuilt` installed locally.
+1. If not hit, electron-connect uses `electron-prebuilt` installed globally.
 
 ## Class: ProcessManager
 
@@ -150,7 +157,7 @@ Broadcasts a event to all clients.
 * `callback` Function
 
 Creates a new `Client` object with `browserWindow` and connects to `ProcessManager`. The `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
-Once a client is created and connects the server, the client can recieve events(e.g. reload).
+Once a client is created and connects the server, the client can receive events(e.g. reload).
 You can omit `browserWindow` in only rendererProcess.
 
 If `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.

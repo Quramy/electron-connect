@@ -3,6 +3,10 @@
 var gulp = require('gulp');
 var electron = require('../../').server.create();
 
+// var electron = require('../../').server.create({
+//   useGlobalElectron: true
+// });
+
 gulp.task('serve', function () {
   // Start browser process
   electron.start();

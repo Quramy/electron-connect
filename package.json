@@ -1,6 +1,6 @@
 {
   "name": "electron-connect",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Livereload tools for Electron development",
   "main": "index.js",
   "scripts": {
@@ -19,11 +19,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-prebuilt": "^0.30.1",
     "lodash": "^3.10.1",
     "ws": "^0.7.2"
   },
   "devDependencies": {
+    "electron-prebuilt": "^0.30.1",
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.1.3"
   }
