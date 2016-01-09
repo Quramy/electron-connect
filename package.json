@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.10.1",
-    "ws": "^0.8.0"
+    "ws": "^1.0.1"
   },
   "devDependencies": {
     "electron-prebuilt": "^0.30.1",
