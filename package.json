@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.10.1",
-    "win-spawn": "^2.0.0",
+    "cross-spawn": "^2.1.4",
     "ws": "^1.0.1"
   },
   "devDependencies": {
