@@ -4,7 +4,8 @@ var gulp = require('gulp');
 var electron = require('../../').server.create();
 
 // var electron = require('../../').server.create({
-//   useGlobalElectron: true
+//   useGlobalElectron: true,
+//   verbose: true
 // });
 
 gulp.task('serve', function () {
