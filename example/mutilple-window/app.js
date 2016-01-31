@@ -24,6 +24,6 @@ app.on('ready', function () {
     height: 300
   });
 
-  window2.loadUrl('file://' + __dirname + '/win2.html');
+  window2.loadURL('file://' + __dirname + '/win2.html');
   //client.create(window2);
 });

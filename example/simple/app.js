@@ -17,7 +17,7 @@ app.on('ready', function () {
     height: 300
   });
 
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   // client can be created in the browser process.
 
