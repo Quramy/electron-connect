@@ -10,15 +10,47 @@ describe('server', function () {
       assert(s);
     });
   });
+
   describe('#start', function () {
     it('starts a new Electron process', function (done) {
       var s = server.create({
         path: __dirname + '/../example/simple'
       });
       s.start(function () {
-        done();
-        s.stop();
+        s.stop(function() {
+          done();
+        });
       });
     });
   });
+
+  describe('#stop', function () {
+    it('stops a new Electron process', function (done) {
+      var s = server.create({
+        path: __dirname + '/../example/simple'
+      });
+      s.start(function () {
+        s.stop(function () {
+          done();
+        });
+      });
+    });
+  });
+
+  describe('#restart', function () {
+    it('restarts a new Electron process', function (done) {
+      var s = server.create({
+        path: __dirname + '/../example/simple'
+      });
+      s.start(function () {
+        s.restart(function(){
+          s.stop(function () {
+            done();
+          });
+        });
+      });
+    });
+  });
+
+
 });
