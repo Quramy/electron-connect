@@ -18,7 +18,7 @@ gulp.task('reload:renderer', function (done) {
   // Reload renderer process
   electron.reload();
   setTimeout(function () {
-    electron.broadcast('myNotificatoin');
+    electron.broadcast('myNotification');
     done();
   });
 });
