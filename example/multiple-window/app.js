@@ -16,7 +16,7 @@ app.on('ready', function () {
     height: 300
   });
 
-  window1.loadUrl('file://' + __dirname + '/win1.html');
+  window1.loadURL('file://' + __dirname + '/win1.html');
   //client.create(window1);
 
   var window2 = new BrowserWindow({
