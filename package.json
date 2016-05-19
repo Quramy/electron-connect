@@ -22,13 +22,13 @@
     "cross-spawn": "^2.2.3",
     "gulp-mocha": "^2.2.0",
     "lodash": "^4.11.1",
-    "spectron": "^3.0.0",
     "tree-kill": "^1.0.0",
     "ws": "^1.1.0"
   },
   "devDependencies": {
     "electron-prebuilt": "^1.0.0",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0"
+    "gulp-mocha": "^2.2.0",
+    "spectron": "^3.0.0"
   }
 }
