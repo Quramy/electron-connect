@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var electron = require('../../').server.create({
   stopOnClose: true,
-  verbose: true
+  // verbose: true
 });
 
 var callback = function(electronProcState) {
