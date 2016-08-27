@@ -1,0 +1,8 @@
+{
+  "name": "electron-connect-multiple-window-example",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "scripts": {
+    "start": "gulp serve"
+  }
+}
