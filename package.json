@@ -1,6 +1,6 @@
 {
   "name": "electron-connect",
-  "version": "0.4.7",
+  "version": "0.5.0",
   "description": "Livereload tools for Electron development",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,10 @@
     "name": "Quramy",
     "email": "yosuke.kurami@gmail.com"
   },
+  "contributors": [
+    "Quramy <yosuke.kurami@gmail.com>",
+    "Sreekanth <s.sreekanth@outlook.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "cross-spawn": "^4.0.0",
