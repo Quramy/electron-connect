@@ -1,12 +1,13 @@
 # electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=master)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)
 Utility tool to develop applications with [Electron](http://electron.atom.io/).
 
-Using this in your Node.js scripts(e.g. `gulpfile.js`), you can livereload your Electron app.
+Using this in your Node.js scripts (e.g. `gulpfile.js`), you can livereload your Electron app.
 
 It provides the following features:
 
-* start(and restart) Electron process in your Node.js script
-* reload renderer process in your Node.js script
+* start (and restart) Electron application.
+* reload renderer processes.
+* stop Electron application.
 
 ## Install
 Use npm:
@@ -43,7 +44,8 @@ gulp.task('serve', function () {
 ```
 
 ### Client
-A client can be created in browser process or renderer process.
+A client can be created in either browser process or renderer process.
+`Note:` Please make sure it is not done in both.
 
 * RendererProcess
 ```html
@@ -87,13 +89,14 @@ If you want details, see [example/simple](example/simple).
 
 ## server.create([options])
 
-* `option` Object
+* `options` Object
  * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your forked Electron.
- * `useGlobalElectron` Boolean. If set, electron-connect use `electron-prebuilt` installed globally(default: `false`).
- * `path` String. A path to your `package.json` file(default: `process.cwd()`).
- * `port` Number. WebSocket server port(default: `30080`).
+ * `useGlobalElectron` Boolean. If set, electron-connect use `electron-prebuilt` installed globally (default: `false`).
+ * `path` String. A path to your `package.json` file (default: `process.cwd()`).
+ * `port` Number. WebSocket server port (default: `30080`).
  * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).
- * `verbose` Boolean. If set, show all electron-connect log in your prompt(default: `false`).
+ * `verbose` Boolean. If set, show all electron-connect log in your prompt (default: `false`).
+ * `stopOnClose` Boolean. If set, closing last remaining window stops the electron application.
 
 Returns a new `ProcessManager` object.
 
@@ -101,6 +104,15 @@ If neither `electron` nor `useGlobalElectron` are set, electron-connect searches
 
 1. First, electron-connect searches `electron-prebuilt` installed locally.
 1. If not hit, electron-connect uses `electron-prebuilt` installed globally.
+
+**New in version 0.5.x and onwards :**
+Now, ProcessManager's `start()`, `restart()` and `stop()` methods invoke ``callback`` with an argument that indicates the `state` of the electron process, which could be one of the following string values -
+* `started`
+* `restarting`
+* `restarted`
+* `stopped`
+
+See [example/stop-on-close](example/stop-on-close), where you can find sample code that uses `stopOnClose` option and `stopped` state to shutdown gulp process gracefully.
 
 ## Class: ProcessManager
 
@@ -140,30 +152,31 @@ Kills Electron process and stops server.
 * `eventName` String
 * `callback` Function
 
-Registers an eventhandler. It can be emitted by `Client.sendMessage`.
+Registers an eventhandler that gets invoked when an event is emitted by `Client.sendMessage`.
 
 ### broadcast(eventName, [data])
 
 * `eventName` String. A message type.
 * `data` Object. A message data.
 
-Broadcasts a event to all clients.
+Broadcasts an event to all clients.
 
 ## client.create([browserWindow], [options], [callback])
 
-* `browserWindow` Object
+* `browserWindow` Object. Optional, in rendererProcess only. Required, when client is created in browserProcess.
 * `options` Object
- * `port` Number
+ * `port` Number. WebSocket server port (default: `30080`) that client should connect to.
  * `sendBounds` Boolean
  * `verbose` Boolean
 * `callback` Function
 
-Creates a new `Client` object with `browserWindow` and connects to `ProcessManager`. The `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
-Once a client is created and connects the server, the client can receive events(e.g. reload).
-You can omit `browserWindow` in only rendererProcess.
+Creates a new `Client` object associated with `browserWindow` and connects to `ProcessManager`.
 
-If `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.
-And when `ProcessManager.restart()` is called, the client recover the bounds stored at server.
+The `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.
+Once a client is created and connected to the server, client can receive events (e.g. reload).
+
+If `sendBounds` is set (default `true`), client sends a bounds object when `browserWindow` moves or resizes.
+And when `ProcessManager.restart()` is called, client recovers the bounds stored at server.
 
 ## class: Client
 
@@ -176,7 +189,7 @@ An identifier of this client. It is a same value `browserWindow.id`.
 * `eventName` String
 * `callback` Function
 
-Registers an eventhandler. It can be emitted by `ProcessManager.broadcast`.
+Registers an eventhandler that gets invoked, when an event is emitted by `ProcessManager.broadcast`.
 
 ### sendMessage(eventName, [data])
 
