@@ -167,7 +167,7 @@ Broadcasts an event to all clients.
 * `options` Object
  * `port` Number. WebSocket server port (default: `30080`) that client should connect to.
  * `sendBounds` Boolean
- * `verbose` Boolean
+  * `verbose` Number. `0` - warning only, `1` - warning and info only, `2` - all logs (default: `1`).
 * `callback` Function
 
 Creates a new `Client` object associated with `browserWindow` and connects to `ProcessManager`.
