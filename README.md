@@ -95,7 +95,7 @@ If you want details, see [example/simple](example/simple).
  * `path` String. A path to your `package.json` file (default: `process.cwd()`).
  * `port` Number. WebSocket server port (default: `30080`).
  * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).
- * `verbose` Boolean. If set, show all electron-connect log in your prompt (default: `false`).
+ * `verbose` Number. The granularity of the electron-connect logging in your prompt. `0` - warning only, `1` - warning and info only, `2` - all logs (default: `1`).
  * `stopOnClose` Boolean. If set, closing last remaining window stops the electron application.
 
 Returns a new `ProcessManager` object.
