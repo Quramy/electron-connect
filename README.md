@@ -178,7 +178,7 @@ Once a client is created and connected to the server, client can receive events 
 If `sendBounds` is set (default `true`), client sends a bounds object when `browserWindow` moves or resizes.
 And when `ProcessManager.restart()` is called, client recovers the bounds stored at server.
 
-## class: Client
+## Class: Client
 
 ### id
 
