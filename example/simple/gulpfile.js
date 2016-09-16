@@ -5,7 +5,7 @@ var electron = require('../../').server.create();
 
 // var electron = require('../../').server.create({
 //   useGlobalElectron: true,
-//   verbose: true
+//   logLevel: 2
 // });
 
 gulp.task('serve', function () {

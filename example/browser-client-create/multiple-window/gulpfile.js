@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var electron = require('../../../').server.create({
-  verbose: true
+  logLevel: 2
 });
 
 gulp.task('serve', function () {
