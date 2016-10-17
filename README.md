@@ -13,8 +13,8 @@ It provides the following features:
 Use npm:
 
 ```bash
-npm install -g electron-prebuilt
-npm install electron-connect
+npm install electron
+npm install electron-connect --save-dev
 ```
 
 ## Usage
@@ -90,8 +90,8 @@ If you want details, see [example/simple](example/simple).
 ## server.create([options])
 
 * `options` Object
- * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your forked Electron.
- * `useGlobalElectron` Boolean. If set, electron-connect use `electron-prebuilt` installed globally (default: `false`).
+ * `electron` Object. An `electron` module. Set it If you want to use your forked Electron.
+ * `useGlobalElectron` Boolean. If set, electron-connect uses `electron` module installed globally (default: `false`).
  * `path` String. A path to your `package.json` file (default: `process.cwd()`).
  * `port` Number. WebSocket server port (default: `30080`).
  * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).
@@ -100,10 +100,10 @@ If you want details, see [example/simple](example/simple).
 
 Returns a new `ProcessManager` object.
 
-If neither `electron` nor `useGlobalElectron` are set, electron-connect searches `electron-prebuilt` modules automatically.
+If neither `electron` nor `useGlobalElectron` option is set, electron-connect searches for `electron` module automatically.
 
-1. First, electron-connect searches `electron-prebuilt` installed locally.
-1. If not hit, electron-connect uses `electron-prebuilt` installed globally.
+1. First, electron-connect searches `electron` installed locally.
+1. If not hit, electron-connect uses `electron` installed globally.
 
 **New in version 0.5.x and onwards :**
 Now, ProcessManager's `start()`, `restart()` and `stop()` methods invoke ``callback`` with an argument that indicates the `state` of the electron process, which could be one of the following string values -
