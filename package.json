@@ -26,12 +26,12 @@
     "cross-spawn": "^5.0.1",
     "lodash": "^4.17.2",
     "tree-kill": "^1.1.0",
-    "ws": "^1.1.1"
+    "ws": "^2.2.2"
   },
   "devDependencies": {
     "electron": "^1.4.7",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^4.2.0",
     "spectron": "^3.4.0"
   }
 }
