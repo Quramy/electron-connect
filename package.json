@@ -23,15 +23,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "cross-spawn": "^5.0.1",
-    "lodash": "^4.17.2",
+    "cross-spawn": "^5.1.0",
+    "lodash": "^4.17.4",
     "tree-kill": "^1.1.0",
-    "ws": "^1.1.1"
+    "ws": "^3.1.0"
   },
   "devDependencies": {
-    "electron": "^1.4.7",
+    "electron": "^1.6.11",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^3.0.1",
-    "spectron": "^3.4.0"
+    "gulp-mocha": "^4.3.1",
+    "spectron": "^3.7.2"
   }
 }
