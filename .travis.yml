@@ -6,7 +6,7 @@ env:
   - GIT_AUTHOR_EMAIL=yosuke.kurami@gmail.com
 language: node_js
 node_js:
-- 4.6.2
+- 4
 - 6
 before_install:
 - npm install -g gulp
