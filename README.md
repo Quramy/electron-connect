@@ -1,4 +1,6 @@
 # electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=master)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Quramy/electron-connect.svg)](https://greenkeeper.io/)
 Utility tool to develop applications with [Electron](http://electron.atom.io/).
 
 Using this in your Node.js scripts (e.g. `gulpfile.js`), you can livereload your Electron app.
